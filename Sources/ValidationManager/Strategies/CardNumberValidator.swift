@@ -10,9 +10,9 @@ import Foundation
 public class CardNumberValidator: Validator {
 
     public struct Config {
-        var cardNumber: String
-        var cardValidationError: String
-        var cardLengthValidationError: String
+        public var cardNumber: String
+        public var cardValidationError: String
+        public var cardLengthValidationError: String
     }
 
     public var config: Config

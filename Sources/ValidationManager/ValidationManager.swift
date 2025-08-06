@@ -5,9 +5,9 @@ import Foundation
 
 public class ValidationManager: Validator {
 
-    var strategy: Validator
+    public var strategy: Validator
 
-    init(strategy: Validator) {
+    public init(strategy: Validator) {
         self.strategy = strategy
     }
 

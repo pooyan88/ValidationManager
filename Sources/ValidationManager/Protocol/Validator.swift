@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public protocol Validator {
+    func validate() -> (isValid: Bool, error: String?)
+}

@@ -13,6 +13,12 @@ public class CardNumberValidator: Validator {
         public var cardNumber: String
         public var cardValidationError: String
         public var cardLengthValidationError: String
+
+        public init(cardNumber: String, cardValidationError: String, cardLengthValidationError: String) {
+            self.cardNumber = cardNumber
+            self.cardValidationError = cardValidationError
+            self.cardLengthValidationError = cardLengthValidationError
+        }
     }
 
     public var config: Config

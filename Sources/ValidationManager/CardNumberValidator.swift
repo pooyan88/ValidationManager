@@ -31,11 +31,11 @@ public class CardNumberValidator: Validator {
 
         let hasValidPrefix = allPrefixes.contains { pureCardNumber.hasPrefix($0) }
         guard hasValidPrefix else {
-            return .invalid(error: config.errorType.message)
+            return .invalid(error: config.invalidMessage)
         }
 
         guard pureCardNumber.count == 16 else {
-            return .invalidLength(error: config.errorType.message)
+            return .invalidLength(error: config.invalidLengthMessage)
         }
 
         if config.input.contains("**") {
@@ -57,6 +57,6 @@ public class CardNumberValidator: Validator {
         }
 
         let isValid = sum % 10 == 0
-        return isValid ? .valid : .invalid(error: config.errorType.message)
+        return isValid ? .valid : .invalid(error: config.invalidMessage)
     }
 }

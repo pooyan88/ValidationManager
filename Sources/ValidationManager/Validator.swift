@@ -8,5 +8,9 @@
 import Foundation
 
 public protocol Validator {
-    func validate() -> (isValid: Bool, error: String?)
+    func validate() -> ValidationState
+}
+
+public enum ValidationState {
+    case notEvaluated, valid, invalidCardNumber(error: String), invalidLength(error: String)
 }

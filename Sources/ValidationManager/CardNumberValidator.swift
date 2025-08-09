@@ -22,9 +22,7 @@ public class CardNumberValidator: Validator {
     }
 
     public var config: Config
-    public var isValid: Bool {
-        return validate().isValid
-    }
+    public var validationState: ValidationState = .notEvaluated
     private var loader = Loader()
     private var banks: [BankModel] = []
 
@@ -37,23 +35,23 @@ public class CardNumberValidator: Validator {
        }
     }
 
-    public func validate() -> (isValid: Bool, error: String?) {
-        guard !config.cardNumber.isEmpty else { return (true, "")}
+    public func validate() -> ValidationState {
+        guard !config.cardNumber.isEmpty else { return .valid}
         let pureCardNumber = config.cardNumber.filter(\.isNumber)
 
         let allPrefixes = banks.flatMap { $0.prefixes }
 
         let hasValidPrefix = allPrefixes.contains { pureCardNumber.hasPrefix($0) }
         guard hasValidPrefix else {
-            return (false, config.cardValidationError)
+            return .invalidCardNumber(error: config.cardValidationError)
         }
 
         guard pureCardNumber.count == 16 else {
-            return (false, config.cardLengthValidationError)
+            return .invalidLength(error: config.cardLengthValidationError)
         }
 
         if config.cardNumber.contains("**") {
-            return (true, nil)
+            return .valid
         }
 
         var sum = 0
@@ -71,6 +69,6 @@ public class CardNumberValidator: Validator {
         }
 
         let isValid = sum % 10 == 0
-        return (isValid, isValid ? nil : config.cardValidationError)
+        return isValid ? .valid : .invalidCardNumber(error: config.cardLengthValidationError)
     }
 }

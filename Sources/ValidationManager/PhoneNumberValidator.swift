@@ -29,7 +29,7 @@ public class PhoneNumberValidation: Validator {
             let startsWithNine = phone.hasPrefix("9")
 
             guard startsWithZero || startsWithNine else {
-                return .invalidCardNumber(error: config.invalidNumberError)
+                return .invalid(error: config.invalidNumberError)
             }
             if startsWithZero && phone.count != 11 {
                 return .invalidLength(error: config.invalidNumberLengthError)

@@ -17,30 +17,26 @@ public class PhoneNumberValidation: Validator {
 
     public var config: Config
 
-    public var isPhoneNumberValid: Bool {
-        return validate().isValid
-    }
-
     public init(config: Config) {
         self.config = config
     }
 
-    public func validate() -> (isValid: Bool, error: String?) {
+    public func validate() -> ValidationState{
             let phone = config.phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !phone.isEmpty else { return (true, nil) }
+        guard !phone.isEmpty else { return .valid }
 
             let startsWithZero = phone.hasPrefix("0")
             let startsWithNine = phone.hasPrefix("9")
 
             guard startsWithZero || startsWithNine else {
-                return (false, config.invalidNumberError)
+                return .invalidCardNumber(error: config.invalidNumberError)
             }
             if startsWithZero && phone.count != 11 {
-                return (false, config.invalidNumberLengthError)
+                return .invalidLength(error: config.invalidNumberLengthError)
             }
             if startsWithNine && phone.count != 10 {
-                return (false, config.invalidNumberLengthError)
+                return .invalidLength(error: config.invalidNumberLengthError)
             }
-            return (true, nil)
+            return .valid
         }
 }

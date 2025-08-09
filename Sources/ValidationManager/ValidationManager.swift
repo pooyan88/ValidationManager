@@ -11,7 +11,7 @@ public class ValidationManager: Validator {
         self.strategy = strategy
     }
 
-    public func validate() -> (isValid: Bool, error: String?) {
+    public func validate() -> ValidationState{
         return strategy.validate()
     }
 }

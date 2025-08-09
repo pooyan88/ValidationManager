@@ -19,7 +19,7 @@ let package = Package(
             dependencies: [],
             path: "Sources/ValidationManager",
             resources: [
-                .process("Resources") // <- Include Banks.json or other files here
+                .process("Resources") 
             ]
         ),
         .testTarget(

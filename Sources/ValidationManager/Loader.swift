@@ -23,7 +23,7 @@ public enum LoaderError: Error, LocalizedError {
 
 public class Loader {
     public func Load<T: Codable>(_ type: T.Type, from file: String) throws -> T {
-        guard let url = Bundle.main.url(forResource: file, withExtension: "json") else {
+        guard let url = Bundle.module.url(forResource: file, withExtension: "json") else {
             throw LoaderError.fileNotFound(file)
         }
         do {

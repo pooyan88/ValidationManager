@@ -11,6 +11,6 @@ public protocol Validator {
     func validate() -> ValidationState
 }
 
-public enum ValidationState {
+public enum ValidationState: Equatable {
     case notEvaluated, valid, invalidCardNumber(error: String), invalidLength(error: String)
 }

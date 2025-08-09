@@ -38,6 +38,7 @@ public class CardNumberValidator: Validator {
     }
 
     public func validate() -> (isValid: Bool, error: String?) {
+        guard !config.cardNumber.isEmpty else { return (true, "")}
         let pureCardNumber = config.cardNumber.filter(\.isNumber)
 
         let allPrefixes = banks.flatMap { $0.prefixes }

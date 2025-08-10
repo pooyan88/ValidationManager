@@ -5,7 +5,7 @@
 //  Created by Pooyan J on 5/15/1404 AP.
 //
 
-import Foundation
+import UIKit
 
 public protocol Validator {
     func validate() -> ValidationState
@@ -13,6 +13,17 @@ public protocol Validator {
 
 public enum ValidationState: Equatable {
     case notEvaluated, valid, invalid(error: String), invalidLength(error: String)
+
+    var color: UIColor {
+        switch self {
+        case .notEvaluated:
+            return .clear
+        case .valid:
+            return .green
+        case .invalid, .invalidLength:
+            return .red
+        }
+    }
 }
 
 public struct Config<T: Equatable> {

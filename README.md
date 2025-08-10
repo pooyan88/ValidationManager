@@ -22,50 +22,20 @@ This README is ready to copy-paste into your `README.md`.
 
 ---
 
-## Installation (Swift Package Manager)
+📦 Installation
 
-Add to your `Package.swift`:
+Swift Package Manager (SPM)
 
-```swift
-// Package.swift (excerpt)
-dependencies: [
-    .package(url: "https://github.com/pooyan88/ValidationManager", from: "1.0.0"),
-],
-targets: [
-    .target(
-        name: "YourApp",
-        dependencies: ["ValidationManager"],
-        resources: [
-            // if the package includes Banks.json in its resources,
-            // you don't need to add it here; add it to the package target that provides it
-        ]
-    )
-]
+You can add ValidationManager via Xcode:
 
-public protocol Validator {
-    func validate() -> ValidationState
-}
+https://github.com/pooyan88/ValidationManager
 
-public enum ValidationState: Equatable {
-    case notEvaluated
-    case valid
-    case invalid(error: String)
-    case invalidLength(error: String)
+Or add the following in your Package.swift:
 
-    public var color: UIColor { /* .clear / .green / .red */ }
-}
+.package(url: "https://github.com/pooyan88/ValidationManager", from: "1.0.0")
 
-public struct Config<T: Equatable> {
-    public var input: T
-    public var invalidMessage: String
-    public var invalidLengthMessage: String
-    // init(input:invalidMessage:invalidLengthMessage:)
-}
-
-```
-
-Usage
-Import your package module name (example uses IranianInputValidator). Replace with your actual module name if different.
+🚀 Usage
+Import your package module name (example uses ValidationManager). Replace with your actual module name if different.
 Phone number
 
 ```swift

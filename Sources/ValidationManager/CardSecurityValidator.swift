@@ -13,14 +13,14 @@ public class CardSecurityValidator: Validator {
         case pin(text: String, min: Int, max: Int), cvv2(text: String, min: Int, max: Int)
     }
 
-    var config: Config<SecurityType> {
+    public var config: Config<SecurityType> {
         didSet {
             validationState = validate()
         }
     }
     var validationState: ValidationState = .notEvaluated
 
-    init(config: Config<SecurityType>) {
+    public init(config: Config<SecurityType>) {
         self.config = config
     }
 

@@ -29,12 +29,12 @@ Add to your `Package.swift`:
 ```swift
 // Package.swift (excerpt)
 dependencies: [
-    .package(url: "https://github.com/yourusername/iranian-input-validator.git](https://github.com/pooyan88/ValidationManager", from: "1.0.0"),
+    .package(url: "https://github.com/pooyan88/ValidationManager", from: "1.0.0"),
 ],
 targets: [
     .target(
         name: "YourApp",
-        dependencies: ["IranianInputValidator"],
+        dependencies: ["ValidationManager"],
         resources: [
             // if the package includes Banks.json in its resources,
             // you don't need to add it here; add it to the package target that provides it

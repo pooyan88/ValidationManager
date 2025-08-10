@@ -39,9 +39,11 @@ Or add the following in your Package.swift:
 Import your package module name (example uses ValidationManager). Replace with your actual module name if different.
 
 
-📱 Phone Number
 
 ```swift
+
+📱 Phone Number
+
 
 import IranianInputValidator
 import UIKit
@@ -66,7 +68,7 @@ case .notEvaluated:
 
 ```
 ```swift
-National code (کد ملی)
+🆔 National Code (کد ملی)
 
 let cardConfig = Config(
     input: "6037991234567890",
@@ -91,7 +93,7 @@ default:
 ```
 
 ```swift
-Card number
+💳 Card Number
 let cardConfig = Config(
     input: "6037991234567890",
     invalidMessage: "Card number is invalid.",
@@ -116,9 +118,9 @@ default:
 
 
 Note: Card validator reads bank prefixes from Banks.json via Loader (uses Bundle.module.url(forResource:withExtension:)). Ensure Banks.json is added to your package resources.
-CVV2 / PIN (CardSecurityValidator)
 
 ```swift
+🔐 CVV2 / PIN
 // CVV2 example
 let cvvConfig = Config(
     input: CardSecurityValidator.SecurityType.cvv2(text: "123", min: 3, max: 4),
@@ -143,7 +145,7 @@ let pinState = pinValidator.validate()
 
 ```swift
 
-Limited number (min / max)
+🔢 Limited Number (Min / Max)
 
 let limit = LimitedNumberValidator.Limit(number: "25", min: 20, max: 30)
 let limitedConfig = Config(

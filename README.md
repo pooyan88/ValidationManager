@@ -29,7 +29,7 @@ Add to your `Package.swift`:
 ```swift
 // Package.swift (excerpt)
 dependencies: [
-    .package(url: "https://github.com/yourusername/iranian-input-validator.git", from: "1.0.0"),
+    .package(url: "https://github.com/yourusername/iranian-input-validator.git](https://github.com/pooyan88/ValidationManager", from: "1.0.0"),
 ],
 targets: [
     .target(

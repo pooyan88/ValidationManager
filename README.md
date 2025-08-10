@@ -62,6 +62,7 @@ public struct Config<T: Equatable> {
     // init(input:invalidMessage:invalidLengthMessage:)
 }
 
+'''
 
 Usage
 Import your package module name (example uses IranianInputValidator). Replace with your actual module name if different.

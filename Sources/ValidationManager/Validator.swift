@@ -16,7 +16,6 @@ public enum ValidationState: Equatable {
 }
 
 public struct Config<T: Equatable> {
-
     public var input: T
     public var invalidMessage: String
     public var invalidLengthMessage: String

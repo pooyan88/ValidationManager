@@ -62,11 +62,13 @@ public struct Config<T: Equatable> {
     // init(input:invalidMessage:invalidLengthMessage:)
 }
 
-'''
+```
 
 Usage
 Import your package module name (example uses IranianInputValidator). Replace with your actual module name if different.
 Phone number
+
+```swift
 
 import IranianInputValidator
 import UIKit
@@ -89,6 +91,8 @@ case .notEvaluated:
     break
 }
 
+```
+```swift
 National code (کد ملی)
 
 let cardConfig = Config(
@@ -111,7 +115,9 @@ case .invalidLength(let err):
 default:
     break
 }
+```
 
+```swift
 Card number
 let cardConfig = Config(
     input: "6037991234567890",
@@ -133,9 +139,13 @@ case .invalidLength(let err):
 default:
     break
 }
+```
+
+
 Note: Card validator reads bank prefixes from Banks.json via Loader (uses Bundle.module.url(forResource:withExtension:)). Ensure Banks.json is added to your package resources.
 CVV2 / PIN (CardSecurityValidator)
 
+```swift
 // CVV2 example
 let cvvConfig = Config(
     input: CardSecurityValidator.SecurityType.cvv2(text: "123", min: 3, max: 4),
@@ -156,6 +166,10 @@ let pinConfig = Config(
 let pinValidator = CardSecurityValidator(config: pinConfig)
 let pinState = pinValidator.validate()
 
+```
+
+```swift
+
 Limited number (min / max)
 
 let limit = LimitedNumberValidator.Limit(number: "25", min: 20, max: 30)
@@ -167,6 +181,7 @@ let limitedConfig = Config(
 
 let limitedValidator = LimitedNumberValidator(config: limitedConfig)
 let limitedState = limitedValidator.validate()
+```
 
 Important: The LimitedNumberValidator uses Limit(number:min:max) struct — supply the number as a String and the min/max as Int.
 ValidationManager (strategy)
@@ -179,12 +194,14 @@ Banks.json
 The CardNumberValidator depends on a JSON file (example name: Banks.json) containing an array of bank models and their prefixes. Put this JSON in your package resources (and reference it as "Banks" when using Loader.Load).
 Example minimal Banks.json structure:
 
+```json
 [
   {
     "name": "Example Bank",
     "prefixes": ["603799", "639347"]
   }
 ]
+```
 
 Extending
 Create your own validator by conforming to Validator:

@@ -13,6 +13,12 @@ public class LimitedNumberValidator: Validator {
         var number: String
         var min: Int
         var max: Int
+
+        public init(number: String, min: Int, max: Int) {
+            self.number = number
+            self.min = min
+            self.max = max
+        }
     }
     var config: Config<Limit> {
         didSet {

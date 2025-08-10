@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class NationalCodeValidator {
+public class NationalCodeValidator: Validator {
 
     public var config: Config<String> {
         didSet {
@@ -21,7 +21,7 @@ public class NationalCodeValidator {
         self.validationState = validationState
     }
 
-    func validate() -> ValidationState {
+    public func validate() -> ValidationState {
         guard !config.input.isEmpty else {
             return .valid
         }

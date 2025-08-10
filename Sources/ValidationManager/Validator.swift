@@ -14,7 +14,7 @@ public protocol Validator {
 public enum ValidationState: Equatable {
     case notEvaluated, valid, invalid(error: String), invalidLength(error: String)
 
-    var color: UIColor {
+   public var color: UIColor {
         switch self {
         case .notEvaluated:
             return .clear

@@ -35,6 +35,7 @@ Or add the following in your Package.swift:
 .package(url: "https://github.com/pooyan88/ValidationManager", from: "1.0.0")
 
 🚀 Usage
+
 Import your package module name (example uses ValidationManager). Replace with your actual module name if different.
 Phone number
 

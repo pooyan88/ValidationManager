@@ -16,9 +16,8 @@ public class NationalCodeValidator: Validator {
     }
     public var validationState: ValidationState = .notEvaluated
 
-    public init(config: Config<String>, validationState: ValidationState) {
+    public init(config: Config<String>) {
         self.config = config
-        self.validationState = validationState
     }
 
     public func validate() -> ValidationState {

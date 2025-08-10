@@ -45,7 +45,7 @@ Import your package module name (example uses ValidationManager). Replace with y
 📱 Phone Number
 
 
-import IranianInputValidator
+import ValidationManager
 import UIKit
 
 let phoneConfig = Config(

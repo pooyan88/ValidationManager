@@ -27,7 +27,7 @@ public class LimitedNumberValidator: Validator {
     }
     var validationState: ValidationState = .notEvaluated
 
-    init(config: Config<Limit>) {
+    public init(config: Config<Limit>) {
         self.config = config
     }
 

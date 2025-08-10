@@ -34,10 +34,16 @@ public class CardSecurityValidator: Validator {
     }
 
     private func validateCVV2(cvv2: String, min: Int, max: Int) -> ValidationState {
-        guard !cvv2.isEmpty else { return .valid }
-        let numericCvv2 = cvv2.filter({$0.isNumber})
-        let intCVV2 = Int(numericCvv2) ?? 0
-        if intCVV2 >= min && intCVV2 <= max {
+        if cvv2.isEmpty {
+            return .valid
+        }
+        let numericCvv2 = cvv2.filter { $0.isNumber }
+
+        guard numericCvv2.count == cvv2.count else {
+            return .invalid(error: config.invalidMessage)
+        }
+
+        if numericCvv2.count >= min && numericCvv2.count <= max {
             return .valid
         } else {
             return .invalidLength(error: config.invalidLengthMessage)
@@ -45,10 +51,16 @@ public class CardSecurityValidator: Validator {
     }
 
     private func validatePin(pin: String, min: Int, max: Int) -> ValidationState {
-        guard !pin.isEmpty else { return .valid }
-        let numericPin = pin.filter({$0.isNumber})
-        let IntPin = Int(numericPin) ?? 0
-        if IntPin >= min && IntPin <= max {
+        if pin.isEmpty {
+            return .valid
+        }
+        let numericPin = pin.filter { $0.isNumber }
+
+        guard numericPin.count == pin.count else {
+            return .invalid(error: config.invalidMessage)
+        }
+
+        if numericPin.count >= min && numericPin.count <= max {
             return .valid
         } else {
             return .invalidLength(error: config.invalidLengthMessage)

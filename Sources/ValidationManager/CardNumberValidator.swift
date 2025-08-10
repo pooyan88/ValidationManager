@@ -9,7 +9,11 @@ import Foundation
 
 public class CardNumberValidator: Validator {
 
-    public var config: Config<String>
+    public var config: Config<String> {
+        didSet {
+            validationState = validate()
+        }
+    }
     public var validationState: ValidationState = .notEvaluated
     private var loader = Loader()
     private var banks: [BankModel] = []

@@ -20,7 +20,7 @@ public class LimitedNumberValidator: Validator {
             self.max = max
         }
     }
-    var config: Config<Limit> {
+    public var config: Config<Limit> {
         didSet {
             validationState = validate()
         }

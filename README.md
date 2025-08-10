@@ -39,7 +39,7 @@ Or add the following in your Package.swift:
 Import your package module name (example uses ValidationManager). Replace with your actual module name if different.
 
 
-Phone number
+📱 Phone Number
 
 ```swift
 
